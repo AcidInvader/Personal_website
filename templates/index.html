@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+<div id="fh5co-wrapper">
+	<div id="fh5co-page">
+		<div id="fh5co-header">
+			{% block header %}
+				{% include "includes/inc_header.html" %}
+			{% endblock %}
+		</div>
+	</div>
+</div>
+{% block body %}
+	{% include "includes/inc_body.html" %}
+{% endblock %}
+<!-- fh5co-blog-section -->
+{% block footer %}
+	{% include "/includes/inc_footer.html" %}
+{% endblock %}
+
