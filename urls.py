@@ -18,6 +18,10 @@ routes = {
     "/blog/": view.Blog(),
     '/contacts/': view.Contacts(),
     '/portfolio/': view.Portfolio(),
+    "/create-project/": view.CreateProject(),
+    "/create-category/": view.CreateCategory(),
+    "/category-list/": view.CategoryList(),
+    "/copy-project/": view.CopyProject(),
     '/services/': view.Services(),
     '/test/': view.Testing(),
 }
