@@ -1,4 +1,4 @@
-from base64 import decodestring
+from base64 import decodebytes
 from copy import deepcopy
 
 
@@ -111,7 +111,7 @@ class Engine:
     @staticmethod
     def decode_value(val):
         val_b = bytes(val.replace("%", "=").replace("+", " "), "UTF-8")
-        val_decode_str = decodestring(val_b)
+        val_decode_str = decodebytes(val_b)
         return val_decode_str.decode("UTF-8")
 
 
