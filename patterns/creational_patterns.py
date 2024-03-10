@@ -33,8 +33,10 @@ class ProjectPrototype:
 
 
 class Project(ProjectPrototype):
-    def __init__(self, name, category):
+    def __init__(self, name, link, category,):
         self.name = name
+        # self.link = link
+        self.category = category
         self.category.projects.append(self)
 
 
@@ -111,8 +113,12 @@ class Engine:
     @staticmethod
     def decode_value(val):
         val_b = bytes(val.replace("%", "=").replace("+", " "), "UTF-8")
-        val_decode_str = decodebytes(val_b)
-        return val_decode_str.decode("UTF-8")
+        print(f"{val_b=}")
+        # val_decode_str = decodebytes(val_b)
+        # print(f"{val_decode_str=}")
+        val_decode_str = val_b.decode("UTF-8")
+        print(f"{val_decode_str=}")
+        return val_decode_str #val_b.decode("UTF-8")
 
 
 # порождающий паттерн Singletone

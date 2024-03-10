@@ -18,6 +18,7 @@ routes = {
     "/blog/": view.Blog(),
     '/contacts/': view.Contacts(),
     '/portfolio/': view.Portfolio(),
+    '/projects-list/': view.ProjectsList(),
     "/create-project/": view.CreateProject(),
     "/create-category/": view.CreateCategory(),
     "/category-list/": view.CategoryList(),

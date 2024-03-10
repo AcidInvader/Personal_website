@@ -4,6 +4,6 @@ from urls import routes, fronts
 
 application = Application(routes, fronts)
 
-with make_server("", 8080, application) as httpd:
-    print("Servering on port 8080...")
+with make_server("", 8000, application) as httpd:
+    print("Servering on port 8000...")
     httpd.serve_forever()

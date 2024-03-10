@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div>
+    <a href="/">Back home</a>
+</div>
+
+<br>
+<br>
+
+<div>
+    <a href="/create-project/?id={{id}}">Create new project</a>
+    <br>
+    <h1>List of projects for category "{{name}}"</h1>
+    {% for item in objects_list %}
+    <li>
+        {{item.name}} <span><a href="/copy-project/?name={{item.name}}">copy</a> </span>
+    </li>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -27,16 +27,21 @@ class Contacts:
         return '200 OK', render('contact.html')
 
 
-# the list of projects
 class Portfolio:
+    def __call__(self, request):
+        return '200 OK', render('portfolio.html')
+
+
+# the list of projects
+class ProjectsList:
     def __call__(self, request):
         logger.log("List of projects")
         try:
             category = site.find_category_by_id(int(request["request_params"]["id"]))
-            return '200 OK', render('portfolio.html', objects_list=category.course,
+            return '200 OK', render('projects-list.html', objects_list=category.projects,
                                     name=category.name, id=category.id)
         except KeyError:
-            return "200 OK", "No course have been added yet"
+            return "200 OK", render('portfolio.html', objects_list="No projects have been added yet")
 
 
 # Controller for project creation
@@ -55,7 +60,7 @@ class CreateProject:
 
                 project = site.create_project("personal", name, category)
                 site.projects.append(project)
-            return "200 OK", render("portfolio.html",
+            return "200 OK", render("projects-list.html",
                                     objects_list=category.projects,
                                     name=category.name,
                                     id=category.id
@@ -69,7 +74,7 @@ class CreateProject:
                                         name=category.name,
                                         id=category.id)
             except KeyError:
-                return "200 OK", "No categories have been added yet"
+                return "200 OK", "No projects have been added yet"
 
 
 # Controller to create a category
@@ -88,7 +93,7 @@ class CreateCategory:
             new_category = site.create_category(name, category)
             site.categories.append(new_category)
 
-            return "200 OK", render("index.html", objects_list=site.categories)
+            return "200 OK", render("portfolio.html", objects_list=site.categories)
         else:
             categories = site.categories
             return "200 OK", render('create_category.html', categories=categories)
@@ -97,8 +102,11 @@ class CreateCategory:
 # Controller of categories list
 class CategoryList:
     def __call__(self, request):
-        logger.log("List of categories")
-        return "200 OK", render("category_list.html", objects_list=site.categories)
+        if site.categories:
+            logger.log("List of categories")
+            return "200 OK", render("category_list.html", objects_list=site.categories)
+        else:
+            return "200 OK", render("category_list.html", objects_list="No category have been added yet")
 
 
 # Controller of copy project
@@ -116,7 +124,7 @@ class CopyProject:
                 new_project.name = new_name
                 site.projects.append(new_project)
 
-            return "200 OK", render("portfolio.html", objects_list=site.projects, name=new_project.category.name)
+            return "200 OK", render("projects-list.html", objects_list=site.projects, name=new_project.category.name)
         except KeyError:
             return "200 OK", "No projects have been added yet"
 
