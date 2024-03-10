@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+<br>
+<div>
+    <a href="/projects-list/?id={{id}}">Back</a>
+</div>
+
+<br>
+<br>
+
+<div>
+    <h1>Creational project for category "{{ name }}"</h1>
+    <form method="post">
+        <input type="text" name="name" placeholder="Project name">
+<!--        <input type="text" name="link" placeholder="Link">-->
+        <button type="submit">Save and back to list of projects</button>
+    </form>
+</div>
+{% endblock %}

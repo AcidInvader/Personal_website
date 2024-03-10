@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Category list</h1>
+<ul>
+    {% for item in objects_list %}
+    <li>
+        {{item.name}} <span>Amount of projects: {{ item.projects_count() }}</span>
+    </li>
+    {% endfor %}
+</ul>
+<div>
+    <li><a href="/portfolio/">List of projects</a></li>
+    <li><a href="/create-project/">Create a project</a></li>
+</div>
+{% endblock %}
